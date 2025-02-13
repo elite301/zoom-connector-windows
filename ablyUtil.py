@@ -1,5 +1,6 @@
 import asyncio
 import os
+import time
 from ably import AblyRealtime
 
 from zoom import automate_zoom, close_zoom, hide_zoom, open_zoom
@@ -29,6 +30,7 @@ def on_message(message):
     if inputs[0] == "connect":
       if len(inputs) >= 4:
         close_zoom()
+        time.sleep(5)
         open_zoom(inputs[2], inputs[3])
         automate_zoom()
     elif inputs[0] == "hide":
