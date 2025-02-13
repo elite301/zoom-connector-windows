@@ -87,5 +87,6 @@ def automate_zoom():
     
 def hide_zoom():
   if checkWindowByTime("Screen sharing meeting controls", 2):
-    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].hide()
+    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].activate()
     pag.hotkey('ctrl', 'shift', 'alt', 'h')
+    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].hide()
