@@ -1,3 +1,4 @@
+import uiautomation as uiauto
 import time
 import webbrowser
 import os
@@ -5,6 +6,7 @@ import platform
 import pygetwindow as gw
 import pyautogui as pag
 
+from uia import clickControl, filterControl
 from window import activeWindowBySubTitle, checkWindowByTime, getWindowBySubTitle
 
 def open_zoom(meeting_id, password=None):
@@ -36,6 +38,7 @@ def automate_zoom():
   
   if gw.getActiveWindowTitle() == "Zoom Workplace": # Do you want to continue without audio?
     gw.getActiveWindow().close()
+    print("Closed 'Do you want to continue without audio?' window.")
   
   activeWindowBySubTitle("Zoom Meeting")
   # Share the Screen
@@ -45,18 +48,22 @@ def automate_zoom():
     gw.getWindowsWithTitle("Select a window or an application that you want to share")[0].activate()
     pag.press('tab'); time.sleep(1)
     pag.press('enter')
+    print("Shared the screen.")
     
   time.sleep(10)
       
   if checkWindowByTime("Screen sharing meeting controls", 2):
     
-    time.sleep(1)
+    wnd = gw.getWindowsWithTitle("Screen sharing meeting controls")[0]
+    wnd.activate()
     
-    for _ in range(4):
-      pag.hotkey("shift", "tab"); time.sleep(0.5)
+    print("Screen sharing meeting controls")
+
+    control = uiauto.ControlFromHandle(wnd._hWnd)
+    
+    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
     
     # Hide Video Panel
-    pag.press('enter'); time.sleep(0.5)
     
     for _ in range(5):
       pag.press('down'); time.sleep(0.5)
@@ -64,7 +71,7 @@ def automate_zoom():
     pag.press('enter'); time.sleep(0.5)
     
     # Auto Accept Panel
-    pag.press('enter'); time.sleep(0.5)
+    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
     
     pag.press('up'); time.sleep(0.5)
       
@@ -75,8 +82,7 @@ def automate_zoom():
     pag.press('enter'); time.sleep(0.5)
     
     # Share Clipboard
-    
-    pag.press('enter'); time.sleep(0.5)
+    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
     
     pag.press('up'); time.sleep(0.5)
       

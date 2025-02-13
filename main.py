@@ -8,3 +8,4 @@ from ablyUtil import Ably
 
 if __name__ == "__main__":
     asyncio.run(Ably(os.getenv('API_KEY'), os.getenv('CHANNEL')))
+    pass
