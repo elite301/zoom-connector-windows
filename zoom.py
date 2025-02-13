@@ -46,7 +46,7 @@ def automate_zoom():
     pag.press('tab'); time.sleep(1)
     pag.press('enter')
     
-  time.sleep(10)
+  time.sleep(15)
       
   if checkWindowByTime("Screen sharing meeting controls", 2):
     gw.getWindowsWithTitle("Screen sharing meeting controls")[0].activate()

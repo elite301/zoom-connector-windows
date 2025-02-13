@@ -3,7 +3,7 @@ import os
 import time
 from ably import AblyRealtime
 
-from zoom import automate_zoom, close_zoom, hide_zoom, open_zoom
+from zoom import automate_zoom, close_zoom, hide_zoom, key_input, open_zoom
 
 laptopName = os.getenv('LAPTOP_NAME')
 
