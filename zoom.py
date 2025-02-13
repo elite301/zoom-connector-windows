@@ -13,7 +13,8 @@ def open_zoom(meeting_id, password=None):
   if password:
     zoom_url += f"&pwd={password}"
   
-  webbrowser.open(zoom_url)
+  opened = webbrowser.open(zoom_url)
+  print("WebBrowser: ", opened)
 
 def close_zoom():
   if platform.system() == "Windows":
@@ -87,6 +88,7 @@ def automate_zoom():
     
 def hide_zoom():
   if checkWindowByTime("Screen sharing meeting controls", 2):
-    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].activate()
+    wnd = gw.getWindowsWithTitle("Screen sharing meeting controls")[0]
+    wnd.activate()
     pag.hotkey('ctrl', 'shift', 'alt', 'h')
-    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].hide()
+    wnd.hide()
