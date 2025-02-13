@@ -1,9 +1,10 @@
 import asyncio
+import os
 from ably import AblyRealtime
 
 from zoom import automate_zoom, close_zoom, hide_zoom, open_zoom
 
-laptopName = "kp"
+laptopName = os.getenv('LAPTOP_NAME')
 
 async def Ably(key, channel):
   ably = AblyRealtime(key)

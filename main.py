@@ -1,5 +1,10 @@
 import asyncio
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from ablyUtil import Ably
 
 if __name__ == "__main__":
-    asyncio.run(Ably("u12gDQ.mtYIqQ:QovSFGaRNVJXhw2L3zw5yC4ugwZccvFgp8eF1vSE8Y8", "Connector"))
+    asyncio.run(Ably(os.getenv('API_KEY'), os.getenv('CHANNEL')))
