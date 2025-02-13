@@ -36,5 +36,5 @@ def on_message(message):
     elif inputs[0] == "hide":
       hide_zoom()
     elif inputs[0] == "key":
-      key_input(input[2])
+      key_input(inputs[2])
   
