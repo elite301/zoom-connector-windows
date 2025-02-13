@@ -100,4 +100,8 @@ def hide_zoom():
     pag.hotkey('ctrl', 'shift', 'alt', 'h')
     wnd.hide()
 def key_input(key):
-  pag.press(key)
+  pag.press(key.split("+"))
+  
+def hotkey_input(key: str):
+  print("Hotkey: ", key.split("+"))
+  pag.hotkey(*key.split("+"))

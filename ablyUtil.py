@@ -3,7 +3,7 @@ import os
 import time
 from ably import AblyRealtime
 
-from zoom import automate_zoom, close_zoom, hide_zoom, key_input, open_zoom
+from zoom import automate_zoom, close_zoom, hide_zoom, hotkey_input, key_input, open_zoom
 
 laptopName = os.getenv('LAPTOP_NAME')
 
@@ -37,4 +37,6 @@ def on_message(message):
       hide_zoom()
     elif inputs[0] == "key":
       key_input(inputs[2])
+    elif inputs[0] == "hotkey":
+      hotkey_input(inputs[2])
   
