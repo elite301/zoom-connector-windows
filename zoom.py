@@ -46,12 +46,13 @@ def automate_zoom():
     pag.press('tab'); time.sleep(1)
     pag.press('enter')
     
-  time.sleep(15)
+  time.sleep(10)
       
   if checkWindowByTime("Screen sharing meeting controls", 2):
-    gw.getWindowsWithTitle("Screen sharing meeting controls")[0].activate()
     
-    for _ in range(3):
+    time.sleep(1)
+    
+    for _ in range(4):
       pag.hotkey("shift", "tab"); time.sleep(0.5)
     
     # Hide Video Panel
