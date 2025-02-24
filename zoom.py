@@ -27,10 +27,15 @@ def close_zoom():
     print("This script currently only supports Windows for closing Zoom.")
 
 def automate_zoom():
-  if not checkWindowByTime("Zoom Meeting"):
-    return False
+  # if not checkWindowByTime("Zoom Meeting"):
+  #   return False
   
-  if checkWindowByTime("Choose one of the audio conference options", 2):
+  if checkWindowByTime("Personal Meeting Room"):
+    activeWindowBySubTitle("Personal Meeting Room")
+    pag.press('enter')
+    print("Entered the Personal Meeting Room.")
+  
+  if checkWindowByTime("Choose one of the audio conference options"):
     gw.getWindowsWithTitle("Choose one of the audio conference options")[0].close()
     print("Closed 'Choose one of the audio conference options' window.")
   
@@ -61,14 +66,30 @@ def automate_zoom():
 
     control = uiauto.ControlFromHandle(wnd._hWnd)
     
-    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
-    
     # Hide Video Panel
+    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
     
     for _ in range(5):
       pag.press('down'); time.sleep(0.5)
       
     pag.press('enter'); time.sleep(0.5)
+    
+    print("Hide Video Panel")
+    
+    # Share Laptop Sound
+    clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
+    
+    for _ in range(7):
+      pag.press('down'); time.sleep(0.5)
+      
+    pag.press('enter'); time.sleep(0.5)
+    
+    for _ in range(2):
+      pag.press('down'); time.sleep(0.5)
+      
+    pag.press('enter'); time.sleep(0.5)
+    
+    print("Share Laptop Sound")
     
     # Auto Accept Panel
     clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
@@ -81,6 +102,8 @@ def automate_zoom():
       
     pag.press('enter'); time.sleep(0.5)
     
+    print("Auto Accept Panel")
+    
     # Share Clipboard
     clickControl(control, "More", "SplitButtonControl"); time.sleep(1)
     
@@ -92,6 +115,8 @@ def automate_zoom():
     pag.press('tab'); time.sleep(0.5)
       
     pag.press('enter'); time.sleep(0.5)
+    
+    print("Share Clipboard")
     
 def hide_zoom():
   if checkWindowByTime("Screen sharing meeting controls", 2):
