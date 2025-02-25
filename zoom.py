@@ -35,7 +35,7 @@ def automate_zoom():
     pag.press('space')
     print("Entered the Personal Meeting Room.")
   
-  if checkWindowByTime("Choose one of the audio conference options"):
+  if checkWindowByTime("Choose one of the audio conference options", limit=2):
     gw.getWindowsWithTitle("Choose one of the audio conference options")[0].close()
     print("Closed 'Choose one of the audio conference options' window.")
   
@@ -55,7 +55,7 @@ def automate_zoom():
     pag.press('enter')
     print("Shared the screen.")
     
-  time.sleep(10)
+  time.sleep(6)
       
   if checkWindowByTime("Screen sharing meeting controls", 2):
     
