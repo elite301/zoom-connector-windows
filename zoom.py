@@ -31,8 +31,8 @@ def automate_zoom():
   #   return False
   
   if checkWindowByTime("Personal Meeting Room"):
-    activeWindowBySubTitle("Personal Meeting Room")
-    pag.press('enter')
+    activeWindowBySubTitle("Personal Meeting Room"); time.sleep(2)
+    pag.press('space')
     print("Entered the Personal Meeting Room.")
   
   if checkWindowByTime("Choose one of the audio conference options"):
